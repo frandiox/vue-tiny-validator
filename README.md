@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="200" src="./logo.png">
+</p>
+
 # Vue Tiny Validator
 
 Tiny validation library (<0.7K gzipped) without dependencies for Vue 3 that serves as building blocks. Inspired by `vee-validate` and `vuetify`'s validation.
