@@ -54,8 +54,8 @@ export default defineComponent({
 Child component (input):
 
 ```js
-import { defineComponent, ref } from 'vue'
-import { useForm } from 'vue-tiny-validator'
+import { defineComponent, watch } from 'vue'
+import { useField } from 'vue-tiny-validator'
 
 export default defineComponent({
   name: 'MyInput',
