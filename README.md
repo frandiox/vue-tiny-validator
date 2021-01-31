@@ -4,6 +4,9 @@
 
 # Vue Tiny Validator
 
+[![size](https://badgen.net/bundlephobia/minzip/vue-tiny-validator)](https://bundlephobia.com/result?p=vue-tiny-validator)
+[![coverage](https://coveralls.io/repos/github/frandiox/vue-tiny-validator/badge.svg?branch=master)](https://coveralls.io/github/frandiox/vue-tiny-validator?branch=master)
+
 Tiny validation library (<0.7K gzipped) without dependencies for Vue 3 that serves as building blocks. Inspired by `vee-validate` and `vuetify`'s validation.
 
 - Non-intrusive in the way you build or style form components. It simply hooks the `modelValue` and gives you the error message to display.
