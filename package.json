@@ -18,7 +18,7 @@
     }
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "dev": "vite --open",
     "build": "vite build && yarn build:types",
     "build:types": "tsc --emitDeclarationOnly",
