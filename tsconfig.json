@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "esnext",
+    "outDir": "./dist",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "declaration": true,
+    "declarationDir": "./dist",
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "baseUrl": ".",
+    "skipLibCheck": true
+  },
+  "files": ["vue-tiny-validator.ts"],
+  "exclude": [
+    "node_modules",
+    "node_modules/**/*",
+    "**/**/*.test.ts",
+    "**/**/*.md",
+    "vite.config.ts",
+    "**/dist"
+  ]
+}
