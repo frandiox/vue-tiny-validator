@@ -83,6 +83,10 @@ export function useField({ value, rules, identifier, form }: FieldOptions) {
     : computed(rules instanceof Function ? rules : () => rules)
 
   const error = ref('')
+
+  /**
+   * Reset the error message.
+   */
   const reset = () => {
     error.value = ''
   }
@@ -97,11 +101,17 @@ export function useField({ value, rules, identifier, form }: FieldOptions) {
     return true
   }
 
+  /**
+   * Validate field value against rules. Returns true if valid.
+   */
   const validate = () =>
     validateRulesResult(
       checkRulesSync(computedValue.value, computedRules.value)
     )
 
+  /**
+   * Validate field value against rules asynchronously. Resolves to true if valid.
+   */
   const validateAsync = () =>
     checkRulesAsync(computedValue.value, computedRules.value).then(
       validateRulesResult
@@ -127,21 +137,9 @@ export function useField({ value, rules, identifier, form }: FieldOptions) {
   }
 
   return {
-    /**
-     * Validate field value against rules. Returns true if valid.
-     */
     validate,
-    /**
-     * Validate field value against rules asynchronously. Returns Promise<true> if valid.
-     */
     validateAsync,
-    /**
-     * Computed error message returned by rules. Null if valid.
-     */
     error: computed(() => error.value),
-    /**
-     * Reset the error message.
-     */
     reset,
   }
 }
@@ -161,6 +159,10 @@ export function useForm() {
   } as FormContext
 
   provide(FormSymbol, context)
+
+  /**
+   * Form context to pass it to non-nested fields.
+   */
   const form = { [FormSymbol]: context }
 
   const errors = computed(() =>
@@ -174,12 +176,18 @@ export function useForm() {
       }))
   )
 
+  /**
+   * Reset the errors.
+   */
   const reset = () => {
     for (const field of fields) {
       field.reset()
     }
   }
 
+  /**
+   * Validate all nested fields against rules. Returns true if all fields are valid.
+   */
   const validate = () => {
     reset()
 
@@ -190,6 +198,9 @@ export function useForm() {
     return errors.value.length === 0
   }
 
+  /**
+   * Validate all nested fields against rules asynchronously. Resolves to true if all fields are valid.
+   */
   const validateAsync = async () => {
     reset()
     await Promise.all([...fields].map((field) => field.validateAsync()))
@@ -197,29 +208,11 @@ export function useForm() {
   }
 
   return {
-    /**
-     * Validate all nested fields against rules. Returns true if all fields are valid.
-     */
     validate,
-    /**
-     * Validate all nested fields against rules asynchronously. Returns Promise<true> if all fields are valid.
-     */
     validateAsync,
-    /**
-     * Array of errors from rules. Empty array if form is valid.
-     */
     errors,
-    /**
-     * Reset the errors.
-     */
     reset,
-    /**
-     * True when there are no errors.
-     */
-    isValid: computed(() => errors.value.length === 0),
-    /**
-     * Form context to pass it to non-nested fields.
-     */
     form,
+    isValid: computed(() => errors.value.length === 0),
   }
 }
