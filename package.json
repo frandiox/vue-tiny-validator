@@ -1,6 +1,6 @@
 {
   "name": "vue-tiny-validator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tiny form validation tool for Vue 3",
   "types": "./dist/vue-tiny-validator.d.ts",
   "module": "./dist/vue-tiny-validator.es.js",
