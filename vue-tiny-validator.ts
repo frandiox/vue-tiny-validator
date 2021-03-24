@@ -42,7 +42,7 @@ export type FieldOptions = {
     | ComputedRef<FormRule[]>
     | (() => FormRule[])
   identifier?: string
-  form?: null | { [FormSymbol]: FormContext }
+  form?: { [FormSymbol]: FormContext }
 }
 
 function checkRulesSync(value: unknown, rules: FormRule[]) {
@@ -107,8 +107,10 @@ export function useField({ value, rules, identifier, form }: FieldOptions) {
       validateRulesResult
     )
 
-  const context =
-    form === undefined ? inject<FormContext>(FormSymbol) : form?.[FormSymbol]
+  const context = inject<FormContext | undefined>(
+    FormSymbol,
+    form?.[FormSymbol]
+  )
 
   if (context) {
     const field = {

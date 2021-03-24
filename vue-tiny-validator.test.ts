@@ -22,7 +22,6 @@ describe('Tiny Validator', () => {
           return useField({
             value: input,
             rules: [isRequired],
-            form: null,
           })
         },
         render() {},
