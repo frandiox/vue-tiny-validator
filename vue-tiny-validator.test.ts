@@ -5,7 +5,7 @@ function mount<V>(Comp: V) {
   const el = document.createElement('div')
   const app = createApp(Comp)
 
-  const unmount = () => app.unmount(el)
+  const unmount = () => app.unmount()
   const comp = app.mount(el) as any
   comp.unmount = unmount
   return comp
