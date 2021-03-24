@@ -118,10 +118,11 @@ const pattern = (v) => /^[a-z0-9_#]+$/i.test(v) || t('form.invalidPattern') // u
 Rules can also be asynchronous:
 
 ```js
-const isUnique = async v => {
+const isUnique = async (v) => {
   const response = await fetch(`/api/is-unique/${v}`)
   // Assuming API returns non-200 code when not unique
   return response.ok || 'Already in use'
+}
 ```
 
 In this case, you'll need to use `validateAsync` instead of `validate`:
